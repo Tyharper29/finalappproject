@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Form to Flask</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script
+    <script src="/static/honorform.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/honorform.css" />
+</head>
+
+<body>
+    <h1>Contact Form</h1>
+    <form action="/echo" method="post">
+        <h4>What is your racial and ethnic background?</h4>
+        <p>
+
+            <input type="checkbox" name="race" class="race_checkbox" value="native_american" /> <label>American Indian /
+                Native Alaskan</label> <br />
+
+            <input type="checkbox" name="race" class="race_checkbox" value="asian" /> <label>Asian</label> <br />
+
+            <input type="checkbox" name="race" class="race_checkbox" value="black" /> <label>Black or African
+                American</label> <br />
+
+            <input type="checkbox" name="race" class="race_checkbox" value="hispanic" /> <label>Hispanic or
+                Latinx</label> <br />
+
+        </p>
+
+        <h4>What is your Gender?</h4>
+        <p>
+
+            <input type="radio" name="gender" class="dq_gender" value="female" /> <label>Female</label> <br />
+
+            <input type="radio" name="gender" class="dq_gender" value="male" /> <label>Male</label> <br />
+
+        </p>
+
+        <div class="dependent_questions" id="dq_gender">
+
+            <h4>Are you currently pregnant?</h4>
+            <p>
+
+                <input type="radio" name="pregnant" value="yes" /> <label>Yes</label> <br />
+
+                <input type="radio" name="pregnant" value="no" /> <label>No</label> <br />
+
+            </p>
+        </div>
+
+
+
+        <h4>Are you currently an intravenous drug user?</h4>
+        <p>
+
+            <input type="radio" name="druguse" value="yes" /> <label>Yes</label> <br />
+
+            <input type="radio" name="druguse" value="no" /> <label>No</label> <br />
+
+        </p>
+
+        <h4>Have you previously recieved or planned to receive bariatic surgery?</h4>
+        <p>
+
+            <input type="radio" name="bariaticsurgery" value="yes" /> <label>Yes</label> <br />
+
+            <input type="radio" name="bariaticsurgery" value="no" /> <label>No</label> <br />
+
+        </p>
+
+        <h4>Have you been diagnosed with Type 2 Diabetes?</h4>
+        <p>
+
+            <input type="radio" name="type2diabetic" class="dq_type2diabetic" value="yes" /> <label>Yes</label> <br />
+
+            <input type="radio" name="type2diabetic" class="dq_type2diabetic" value="no" /> <label>No</label> <br />
+
+        </p>
+
+
+        <div class="dependent_questions" id="dq_type2diabetic">
+
+            <h4>How long have you been diagnosed with type 2 diabetes?</h4>
+            <p>
+                <input type="radio" name="HowLongType2Diabetic" value="0_1" /> <label>Less than 1 year</label><br />
+
+                <input type="radio" name="HowLongType2Diabetic" value="1_2" /> <label>1 to 2 years</label><br />
+
+                <input type="radio" name="HowLongType2Diabetic" value="3_4" /> <label>3 to 4 years</label><br />
+
+                <input type="radio" name="HowLongType2Diabetic" value="5_6" /> <label>5 to 6 years</label><br />
+
+                <input type="radio" name="HowLongType2Diabetic" value="7__" /> <label>7 or more years</label><br />
+
+            </p>
+        </div>
+
+
+        <h4>What is your A1C?</h4>
+        <p>
+            <textarea></textarea>
+        </p>
+
+
+        <h4>In the past month, have you felt like you lost control over your eating?</h4>
+        <p>
+
+            <input type="radio" name="pastmonthlostcontrol" value="yes" /> <label>Yes</label> <br />
+
+            <input type="radio" name="pastmonthlostcontrol" value="no" /> <label>No</label> <br />
+
+        </p>
+
+
+        <h4>How many time in the past month did you feel like you lost control over your eating?</h4>
+        <p>
+            <input type="radio" name="numberoftimeslostcontrol" value="none" /><label>None</label><br />
+
+            <input type="radio" name="numberoftimeslostcontrol" value="once" /><label>Once</label><br />
+
+            <input type="radio" name="numberoftimeslostcontrol" value="twice" /><label>Twice</label><br />
+
+            <input type="radio" name="numberoftimeslostcontrol" value="three_or_more" /><label>Three times or
+                more</label><br />
+
+        </p>
+
+
+        <h4>In the past month, did you feel compelled to consume a large amount of food once you started eating?</h4>
+        <p>
+            <input type="radio" name="complledtoconsumefood" value="yes" /><label>Yes</label><br />
+
+            <input type="radio" name="complledtoconsumefood" value="no" /><label>No</label><br />
+
+            <input type="radio" name="complledtoconsumefood" value="unsure" /><label>Unsure, please
+                explain</label><br /> <textarea></textarea>
+
+        </p>
+
+        <h4>In the past month, did you feel unable to stop eating once you started?</h4>
+        <p>
+            <input type="radio" name="unabletostopeating" value="yes" /><label>Yes</label><br />
+
+            <input type="radio" name="unabletostopeating" value="no" /><label>No</label><br />
+
+            <input type="radio" name="unabletostopeating" value="unsure" /><label>Unsure, please explain</label><br />
+            <textarea></textarea>
+
+        </p>
+
+
+        <h4>Do you feel like you lost control over your eating before you were diagnosed with Type 2 Diabetes?</h4>
+        <p>
+            <input type="radio" name="lostcontrolbeforet2d" value="yes" /><label>Yes</label><br />
+
+            <input type="radio" name="lostcontrolbeforet2d" value="no" /><label>No</label><br />
+
+            <input type="radio" name="lostcontrolbeforet2d" value="unsure" /><label>Unsure, please explain</label><br />
+            <textarea></textarea>
+
+        </p>
+
+        <h4>Do you feel like the loss of control over your eating has gotten worse since being diagnosed with Type 2
+            Diabetes?</h4>
+        <p>
+            <input type="radio" name="lostcontrolworse" value="yes" /><label>Yes</label><br />
+
+            <input type="radio" name="lostcontrolworse" value="no" /><label>No</label><br />
+
+            <input type="radio" name="lostcontrolworse" value="unsure" /><label>Unsure, please explain</label><br />
+            <textarea></textarea>
+
+        </p>
+
+        <h4>Have you ever sought treatment for your loss of control eating?</h4>
+        <p>
+            <input type="radio" name="soughttreatment" class="dq_soughttreatment" value="yes" /><label>Yes</label><br />
+
+            <input type="radio" name="soughttreatment" class="dq_soughttreatment" value="no" /><label>No</label><br />
+
+        </p>
+
+        <div class="dependent_questions" id="dq_soughttreatment">
+
+            <h4>What type of treatment did you access (e.g. dietitian)?</h4>
+            <p>
+                <input type="checkbox" name="treatmentaccess" value="dietitian" /> <label>Dietitian</label><br />
+
+                <input type="checkbox" name="treatmentaccess" value="specialty_edp" /> <label>Specialty eating disorder
+                    program</label><br />
+
+                <input type="checkbox" name="treatmentaccess" value="therapy" /> <label>Therapy</label><br />
+
+                <input type="checkbox" name="treatmentaccess" value="other" />
+                <label>Other</label><br /><textarea></textarea>
+
+            </p>
+
+
+
+            <h4>How long did you engage in each type of treatment (in months and years)?</h4>
+            <p>
+                <input type="radio" name="engageintreatment" value="1_3" /><label>1 to 3 months</label><br />
+
+                <input type="radio" name="engageintreatment" value="3_6" /><label>3 to 6 months</label><br />
+
+                <input type="radio" name="engageintreatment" value="6_12" /><label>6 to 12 months</label><br />
+
+                <input type="radio" name="engageintreatment" value="1__" /><label>One year or more</label><br />
+
+            </p>
+        </div>
+
+        <h4>Do you routinely use mobile technology (e.g. smartphone apps, website) to help you manage your health
+            behavior?</h4>
+        <p>
+            <input type="radio" name="mobiletechnology" value="yes" /><label>Yes</label><br />
+
+            <input type="radio" name="mobiletechnology" value="no" /><label>No</label><br />
+
+        </p>
+
+        <h4>List the apps and/or website you have used to help manage your health behavior (e.g. managing eating
+            behaviors):</h4>
+        <p>
+
+            <textarea></textarea>
+        </p>
+
+
+        <h4>Describe the benefits of using technology to access health behavior apps and/or websites:</h4>
+        <p>
+            <textarea></textarea>
+        </p>
+
+        <h4>How did you hear about the study?</h4>
+        <p>
+
+            <input type="checkbox" name="heardaboutstudy" value="flyer" /><label>Flyer in community</label><br />
+
+            <input type="checkbox" name="heardaboutstudy" value="event" /><label>At a community event</label><br />
+
+            <input type="checkbox" name="heardaboutstudy" value="email" /><label>List serve or Mass Email</label><br />
+
+            <input type="checkbox" name="heardaboutstudy" value="talk" /><label>Word of mouth</label><br />
+
+            <input type="checkbox" name="heardaboutstudy" value="otherway" /><label>Other</label><br />
+            <!--add text box -->
+
+        </p>
+
+
+        <input type="submit" value="Submit Form" />
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+body {
+    background-image: url('https://uncnri.org/wp-content/uploads/2024/12/Landing-page_Header_fullwidth_groups.png');
+    background-repeat: no-repeat;
+}
+
+h1 {
+    color: green;
+}
+
+.external {
+    color: orange;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.external:hover {
+    text-decoration: underline;
+}
+
+#this_ordered_list {
+    font-family: "arial";
+}
+
+h6 {
+    font-size: 4em;
+}
