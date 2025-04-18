@@ -1,6 +1,25 @@
 body {
+    margin: 0;
+    padding: 0;
+    /*
     background-image: url('https://uncnri.org/wp-content/uploads/2024/12/Landing-page_Header_fullwidth_groups.png');
     background-repeat: no-repeat;
+    */
+}
+
+#banner {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+#banner .img {
+    padding: 0;
+    margin: 0;
+}
+
+#content {
+    margin: 10px;
 }
 
 h1 {
