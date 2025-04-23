@@ -26,6 +26,7 @@ def greet():
 @app.route("/echo", methods=["POST"])
 def echo():
     data = {key: request.form.getlist(key) for key in request.form.keys()}
+    print(data["heardaboutstudy"])
     return jsonify(data)
 
 
@@ -38,4 +39,4 @@ def submit_form():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=5050)
