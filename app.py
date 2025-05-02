@@ -1,50 +1,54 @@
+# Import Flask functions for web app handling
 from flask import Flask, request, jsonify, render_template
 
 ## This imports the configuration parser library
 import configparser
+import mysql.connector  # Import MySQL connector for database access
 
 ## This creates an instance of its 'ConfigParser' tool
 cfg = configparser.ConfigParser()
 ## This reads data from 'config.ini' into that 'cfg' variable
 cfg.read(".env")
-import mysql.connector
 
+# Create Flask application instance
 app = Flask(__name__)
 
 
+# Function to run SQL queries
 def runQuery(sql):
+    # Connect to MySQL database
     dbconn = mysql.connector.connect(
         user=cfg["db"]["user"],
         password=cfg["db"]["password"],
         host=cfg["db"]["host"],
         database=cfg["db"]["database"],
     )
-    cursor = dbconn.cursor()
+    cursor = dbconn.cursor()  # Create cursor object to execute SQL
     cursor.execute(sql)
     dbconn.commit()
     dbconn.close()
 
 
-# render templates
+# Route to render a HTML form
 @app.route("/honorform/", methods=["GET"])
 def honorform():
     return render_template("honorform.html")
 
 
-# Home route (GET request)
+# Home route (GET request), returns a simple message
 @app.route("/")
 def home():
     return "Hello from Flask!"
 
 
-# GET route with query parameters
+# Route to greet user via query parameters
 @app.route("/greet", methods=["GET"])
 def greet():
     name = request.args.get("name", "stranger")
     return f"Hello, {name}!"
 
 
-# POST route with JSON body
+# Route to echo back POSTed form data as JSON
 @app.route("/echo", methods=["POST"])
 def echo():
     data = {key: request.form.getlist(key) for key in request.form.keys()}
@@ -52,25 +56,19 @@ def echo():
     return jsonify(data)
 
 
-# # POST route with form data
-# @app.route("/submit-form", methods=["POST"])
-# def submit_form():
-#     data = {key: request.form.getlist(key) for key in request.form.keys()}
-#     return jsonify(data)
-
-
+# Start Flask server if file is run directly
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5050)
 
 
-# POST route with form data
+# Route to handle form submission
 @app.route("/submit-form", methods=["POST"])
 def submit_form():
+    # COllect all submitted form data
     data = {key: request.form.getlist(key) for key in request.form.keys()}
-    # return jsonify(data)
-    # sql = "INSERT INTO honorsurvey_responses (gender, a1c, heardaboutstudy) VALUES ('150', 'male', 'event|email');"
+    # Build SQL insert statement with values from form data
     sql = "INSERT INTO honorsurvey_responses (race, gender, pregnant, druguse, bariaticsurgery, type2diabetic, howlongtype2diabetic, a1c, pastmonthlostcontrol, numberoftimeslostcontrol, compelledtoconsumefood, compelled_to_consume_text, unabletostopeating, unable_to_stop_text, lostcontrolbeforet2d, lost_control_before_text, lostcontrolworse, lost_control_worse_text, soughttreatment, treatmentaccess, engageintreatment, mobiletechnology, tech_apps, tech_benefits, heardaboutstudy) VALUES ('"
-
+    # Concatenate form values into the SQL string
     sql += "|".join(data.get("race", [""]))
     sql += "','"
     sql += data.get("gender", [""])[0]
@@ -121,5 +119,5 @@ def submit_form():
     sql += "', '"
     sql += "|".join(data.get("heardaboutstudy", [""]))
     sql += "');"
-    runQuery(sql)
-    return sql
+    runQuery(sql)  # run SQL insert command
+    return sql  # return executed SQL string
