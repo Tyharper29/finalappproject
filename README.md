@@ -41,4 +41,8 @@ You can test out your the project:
 Visit this page and submit your form:
 http://127.0.0.1:5000/honorform/
 
+## MySQL Database
+If you don't have MySQL on your laptop (and you don't have access to something else you can connect to), you can install Docker Desktop and run a MySQL database from there as a compact container.
+I installed Docker desktop to my computer and went through the process to create an account.
+From there I had MySQL workbench on my computer and made a new connector to link my form to this database.
 
