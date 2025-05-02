@@ -12,7 +12,7 @@ CREATE TABLE honorsurvey_responses (
     a1c TEXT,
     pastmonthlostcontrol VARCHAR(10),
     numberoftimeslostcontrol VARCHAR(20),
-    complledtoconsumefood VARCHAR(10),
+    compelledtoconsumefood VARCHAR(10),
     compelled_to_consume_text TEXT,
     unabletostopeating VARCHAR(10),
     unable_to_stop_text TEXT,
