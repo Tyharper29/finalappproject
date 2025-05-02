@@ -67,7 +67,7 @@ def submit_form():
     # COllect all submitted form data
     data = {key: request.form.getlist(key) for key in request.form.keys()}
     # Build SQL insert statement with values from form data
-    sql = "INSERT INTO honorsurvey_responses (race, gender, pregnant, druguse, bariaticsurgery, type2diabetic, howlongtype2diabetic, a1c, pastmonthlostcontrol, numberoftimeslostcontrol, compelledtoconsumefood, compelled_to_consume_text, unabletostopeating, unable_to_stop_text, lostcontrolbeforet2d, lost_control_before_text, lostcontrolworse, lost_control_worse_text, soughttreatment, treatmentaccess, engageintreatment, mobiletechnology, tech_apps, tech_benefits, heardaboutstudy) VALUES ('"
+    sql = "INSERT INTO honorsurvey_responses (race, gender, pregnant, druguse, bariaticsurgery, type2diabetic, HowLongType2Diabetic, a1c, pastmonthlostcontrol, numberoftimeslostcontrol, compelledtoconsumefood, unabletostopeating, lostcontrolbeforet2d, lostcontrolworse, soughttreatment, treatmentaccess, engageintreatment, mobiletechnology, tech_apps, tech_benefits, heardaboutstudy) VALUES ('"
     # Concatenate form values into the SQL string
     sql += "|".join(data.get("race", [""]))
     sql += "','"
@@ -81,7 +81,7 @@ def submit_form():
     sql += "','"
     sql += data.get("type2diabetic", [""])[0]
     sql += "','"
-    sql += data.get("howlongtype2diabetic", [""])[0]
+    sql += data.get("HowLongType2Diabetic", [""])[0]
     sql += "','"
     sql += data.get("a1c", [""])[0]
     sql += "', '"
@@ -91,19 +91,11 @@ def submit_form():
     sql += "', '"
     sql += data.get("compelledtoconsumefood", [""])[0]
     sql += "', '"
-    sql += data.get("compelled_to_consume_text", [""])[0]
-    sql += "', '"
     sql += data.get("unabletostopeating", [""])[0]
-    sql += "', '"
-    sql += data.get("unable_to_stop_text", [""])[0]
     sql += "', '"
     sql += data.get("lostcontrolbeforet2d", [""])[0]
     sql += "', '"
-    sql += data.get("lost_control_before_text", [""])[0]
-    sql += "', '"
     sql += data.get("lostcontrolworse", [""])[0]
-    sql += "', '"
-    sql += data.get("lost_control_worse_text", [""])[0]
     sql += "', '"
     sql += data.get("soughttreatment", [""])[0]
     sql += "', '"
