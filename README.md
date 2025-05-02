@@ -1,4 +1,4 @@
-# Simple Flask Backend Example for Beginning Python Students
+# Simple Flask Backend information for project
 
 This repo provides a simple Flask backend to support front-end JavaScript applications. It's designed for students who are learning JavaScript but are also taking an introductory Python course and want to experiment with using Flask for their backend.
 
